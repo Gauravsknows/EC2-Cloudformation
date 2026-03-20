@@ -1,0 +1,13 @@
+AWSTemplateFormatVersion: '2010-09-09'
+Description: 'A simple template to launch a free-tier t2.micro EC2 instance.'
+
+Resources:
+  MyFirstInstance:
+    Type: 'AWS::EC2::Instance'
+    Properties:
+      # This fetches the latest Amazon Linux 2023 ID automatically!
+      ImageId: '{{resolve:ssm:/aws/service/ami-amazon-linux-latest/al2023-ami-kernel-default-x86_64}}'
+      InstanceType: 't2.micro'
+      Tags:
+        - Key: Name
+          Value: MyCloudFormationInstance
